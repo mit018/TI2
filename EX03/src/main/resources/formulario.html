@@ -1,72 +1,118 @@
 <html>
-<head>
-<meta content="text/html;" http-equiv="content-type">
 
-<title>Controle de Séries</title>
+<head>
+	<meta content="text/html;" http-equiv="content-type">
+
+	<title>Controle de Séries</title>
 </head>
 
 <script type="text/javascript">
 
-function addIdToPath(form_name, base_url){
-    var your_form = document.getElementById(form_name);
-	var id = your_form.elements.namedItem("id").value;
-	action_src = base_url + id;
-	your_form.action = action_src;
-}
+	function addIdToPath(form_name, base_url) {
+		var your_form = document.getElementById(form_name);
+		var id = your_form.elements.namedItem("id").value;
+		action_src = base_url + id;
+		your_form.action = action_src;
+	}
 
 </script>
 
 
 <body>
-	<p>
-	<h1>Controle de Séries</h1>
-	</p>
-	<section class="section--container__responsive">
-		<section class="section--mainrow__responsive first--section">
-			<h1 class="generaltext">Inserir Série</h1>
-			<form class="form--register" action="http://localhost:6789/serie" method="post" id="form-add">
-				<p>Nome:</p>          
-				<input class="input--register" type="text" name="nome" value=""><br>
-				<p>Quantidade de Episódios:</p>              
-				<input class="input--register" type="text" name="episodios" value=""><br>
-				<p>Quantidade de Temporadas:</p>
-				<input class="input--register" type="text" name="temporadas" value=""><br>
-				<p>ID:</p>
-				<input class="input--register" type="text" name="ID" value=""> <br>
-				<input type="submit" value="cadastrar" class="input--main__style input--button">
-			</form>
-		</section>
-	</section>
-	<section class="section--container__responsive">
-		<section class="section--row__responsive">
-			<h1 class="generaltext">Detalhar Série</h1>
-			<form onsubmit="addIdToPath('form-get', 'http://localhost:6789/serie/')" method="get" id="form-get">
-				<input class="input--down" type="text" id="id" value="" placeholder="id da série..."> 
-				<input type="submit" value="consultar" class="input--button input--consult__style">
-			</form>
-		</section>
-		
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		
-		<section class="section--row__responsive">
-			<h1 class="generaltext">Remover Série</h1>
-			<form onsubmit="addIdToPath('form-delete', 'http://localhost:6789/serie/delete/')" method="get" id="form-delete">
-				<input class="input--down" type="text" id="id" value="" placeholder="id da série...">
-				<input type="submit" value="remover" class="input--remove__style input--button">
-			</form>
-		</section>
-		
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<div class="blocos">
+		<p>
+		<h1 id="titulo">Controle de Séries</h1>
+		</p>
 
-		<section class="section--row__responsive">
-			<h1 class="generaltext">Listar Séries</h1>
-			<form action="http://localhost:6789/serie"  method="get" id="form-all">
-			    <br><br><br>
-				<input type="submit" value="todos" class="input--consult__style input--button">
-			</form>
-		</section>
-	</section>
+		<section class="section--container__responsive">
+			<section class="section--mainrow__responsive first--section">
+				<h1 class="generaltext">Inserir Série</h1>
+				<form class="form--register" action="http://localhost:6789/serie" method="post" id="form-add">
+					<div class="blocos">
 
+						<p>Nome:</p>
+						<input class="input--register" type="text" name="nome" value=""><br>
+					</div>
+					<div class="blocos">
+
+						<p>Quantidade de Episódios:</p>
+						<input class="input--register" type="text" name="episodios" value=""><br>
+					</div>
+					<div class="blocos">
+
+						<p>Quantidade de Temporadas:</p>
+						<input class="input--register" type="text" name="temporadas" value=""><br>
+					</div>
+					<div class="blocos">
+
+						<p>ID:</p>
+						<input class="input--register" type="text" name="ID" value=""> <br>
+					</div>
+					<input type="submit" value="cadastrar" class="input--main__style input--button">
+					
+				</form>
+			</section>
+		</section>
+		
+		<section class="section--container__responsive">
+			<section class="section--mainrow__responsive first--section">
+				<h1 class="generaltext">Atualizar Série</h1>
+				
+				<form class="form--register" onsubmit="addIdToPath('form-update', 'http://localhost:6789/serie/update/')" method="post" id="form-update">
+					<div class="blocos">
+
+						<p>Nome:</p>
+						<input class="input--register" type="text" name="nome" value=""><br>
+					</div>
+					<div class="blocos">
+
+						<p>Quantidade de Episódios:</p>
+						<input class="input--register" type="text" name="episodios" value=""><br>
+					</div>
+					<div class="blocos">
+
+						<p>Quantidade de Temporadas:</p>
+						<input class="input--register" type="text" name="temporadas" value=""><br>
+					</div>
+					<div class="blocos">
+
+						<p>ID:</p>
+						<input class="input--register" type="text" name="id" value=""> <br>
+					</div>
+					<input type="submit" value="atualizar" class="input--main__style input--button">
+					
+				</form>
+			</section>
+		</section>
+	</div>
+	
+	<div class="blocos">
+			<form action="http://localhost:6789/serie" method="get" id="form-all">
+			<input type="submit" value="listar todas as séries" class="input--consult__style input--button">
+		</form>
+		<section class="section--container__responsive">
+			<section class="section--row__responsive">
+				<div class="blocos">
+					<h1 class="generaltext">Detalhar Série</h1>
+					<form onsubmit="addIdToPath('form-get', 'http://localhost:6789/serie/')" method="get" id="form-get">
+						<input class="input--down" type="text" id="id" value="" placeholder="id da série...">
+						<input type="submit" value="consultar" class="input--button input--consult__style">
+					</form>
+				</div>
+			</section>
+
+			<section class="section--row__responsive">
+				<div class="blocos">
+					<h1 class="generaltext">Remover Série</h1>
+					<form onsubmit="addIdToPath('form-delete', 'http://localhost:6789/serie/delete/')" method="get"
+						id="form-delete">
+						<input class="input--down" type="text" id="id" value="" placeholder="id da série...">
+						<input type="submit" value="remover" class="input--remove__style input--button">
+					</form>
+				</div>
+			</section>
+		</section>
+	</div>
 	<section class="section--container__responsive" style="visibility: hidden" id="product-result">
 		<table border="1">
 			<tr>
@@ -89,93 +135,107 @@ function addIdToPath(form_name, base_url){
 	</section>
 
 	<style>
-* {
-	box-sizing: border-box;
-}
+		* {
+			box-sizing: border-box;
+		}
 
-body {
-	background-color: white;
-}
+		body {
+			background-image: url(./background.jpg);
+			color: white;
+		}
 
-.generaltext, p {
-	font-family: Arial;
-	text-align: center;
-}
+		#titulo {
+			font-family: 'Courier New', Courier, monospace;
+			text-align: center;
+		}
 
-.section--container__responsive {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	border-bottom: dashed;
-	border-color: gray;
-}
+		.generaltext,
+		p {
+			font-family: 'Courier New', Courier, monospace;
+			text-align: center;
+		}
 
-.input--down {
-	display: block;
-	margin: 0px auto;
-	margin-bottom: 10px;
-}
+		.blocos {
+			background-color: rgba(0, 0, 0, 0.781);
+			border-radius: 20px;
+			margin: 10px;
+			padding: 10px;
+		}
 
-.input--main__style {
-	background-color: #00FF00;
-}
+		.section--container__responsive {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			border-color: gray;
+		}
 
-.input--remove__style {
-	background-color: red;
-}
+		.input--down {
+			display: block;
+			margin: 0px auto;
+			margin-bottom: 10px;
+		}
 
-.input--consult__style {
-	background-color: darkblue;
-}
+		.input--main__style {
+			background-color: #3e8b3e;
+		}
 
-.input--button {
-	font-weight: bold;
-	font-family: Arial;
-	font-size: medium;
-	border-color: transparent;
-	display: block;
-	margin: 0px auto;
-	margin-bottom: 10px;
-	color: white;
-}
+		.input--remove__style {
+			background-color: rgb(105, 12, 12);
+		}
 
-.input--register {
-	display: inline;
-}
+		.input--consult__style {
+			background-color: rgb(38, 38, 102);
+		}
 
-.input--radio {
-	display: inline;
-}
+		.input--button {
+			font-weight: bold;
+			font-family: Arial;
+			font-size: medium;
+			border-color: transparent;
+			display: block;
+			margin: 0px auto;
+			margin-bottom: 10px;
+			color: white;
+		}
 
-input {
-	display: block;
-	border-radius: 7px;
-	padding: 10px;
-	border-style: solid;
-	border-color: lightgray;
-	color: black;
-	padding: 10px;
-	margin-bottom: 10px;
-}
+		.input--register {
+			display: inline;
+		}
 
-.p--radio__display {
-	display: block;
-}
+		.input--radio {
+			display: inline;
+		}
 
-form p {
-	text-align: initial;
-	display: inline;
-	margin-left: 15px;
-}
+		input {
+			display: block;
+			border-radius: 7px;
+			padding: 10px;
+			border-style: solid;
+			border-color: lightgray;
+			color: black;
+			padding: 10px;
+			margin-bottom: 10px;
+		}
 
-.p--nomargin {
-	margin-left: 0px;
-	margin-right: 10px;
-}
-</style>
+		.p--radio__display {
+			display: block;
+		}
+
+		form p {
+			text-align: initial;
+			display: inline;
+			margin-left: 15px;
+		}
+
+		.p--nomargin {
+			margin-left: 0px;
+			margin-right: 10px;
+		}
+	</style>
 
 
 
 </body>
+
 </html>

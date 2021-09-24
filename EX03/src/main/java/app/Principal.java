@@ -15,7 +15,7 @@ public class Principal {
 
         get("/serie/:id", (request, response) -> serieService.get(request, response));
 
-        get("/serie/update/:id", (request, response) -> serieService.update(request, response));
+        post("/serie/update/:id", (request, response) -> serieService.update(request, response));
 
         get("/serie/delete/:id", (request, response) -> serieService.remove(request, response));
 

@@ -59,18 +59,20 @@ public class SerieService {
         
         serieDAO.conectar();
 		Serie serie = (Serie) serieDAO.getSerie(id);
-		
+		serieDAO.close();
 		
         if (serie != null) {
         	serie.setNome(request.queryParams("nome"));
         	serie.setQtdEpisodios(Integer.parseInt(request.queryParams("episodios")));
         	serie.setQtdTemporadas(Integer.parseInt(request.queryParams("temporadas")));
-        	serie.setId(Integer.parseInt(request.queryParams("ID")));
+        	serie.setId(Integer.parseInt(request.queryParams("id")));
+        	
+        	serieDAO.conectar();
         	serieDAO.atualizarSerie(serie);
         	serieDAO.close();
             return id;
         } else {
-        	serieDAO.close();
+        	
             response.status(404); // 404 Not found
             return "Série não encontrada.";
         }
